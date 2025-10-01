@@ -93,7 +93,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <h1 className="text-xl md:text-3xl font-bold leading-tight text-balance">
-                Gerador de cardápio personalizado
+                Gerar Cardápio Personalizado com IA | Weekly Menu Generator
               </h1>
               <p className="text-sm md:text-base text-muted-foreground mt-0.5 md:mt-1">
                 Cardápios semanais adaptados às suas necessidades nutricionais
