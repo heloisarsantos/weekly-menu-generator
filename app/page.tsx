@@ -15,6 +15,7 @@ import { generateFitnessRecommendations } from "@/lib/ai-fitness-generator";
 import { generatePDFReport } from "@/lib/pdf-generator";
 import type { AIRecipe } from "@/lib/ai-recipe-generator";
 import type { AIFitnessRecommendations } from "@/lib/ai-fitness-generator";
+import packageJson from "../package.json";
 
 export default function Home() {
   const [step, setStep] = useState<"form" | "loading" | "results">("form");
@@ -198,6 +199,7 @@ export default function Home() {
             Os valores nutricionais são estimativas. Consulte um nutricionista
             para orientação personalizada.
           </p>
+          <p className="mt-2 text-xs">Versão {packageJson.version}</p>
         </div>
       </footer>
     </div>
