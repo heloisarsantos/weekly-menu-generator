@@ -5,8 +5,11 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import "./globals.css";
+import Script from "next/script";
 
-export const metadata = {
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+export const metadata: Metadata = {
   title: "Gerar Cardápio Personalizado com IA | Weekly Menu Generator",
   description:
     "Crie cardápios semanais saudáveis adaptados às suas necessidades nutricionais com inteligência artificial. Rápido, fácil e grátis!",
@@ -30,13 +33,26 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode,
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );
